@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<!-- <link rel="stylesheet" href="style.css" /> -->
+		<style>
+			@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400&display=swap");
+			* {
+				margin: 0;
+				padding: 0;
+				box-sizing: border-box;
+			}
+
+			:root {
+				--primary: #5aa8f7;
+				--night: #2d3436;
+				--text: white;
+			}
+
+			/* Utility class */
+			.text-center {
+				text-align: center;
+			}
+			body {
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				width: 100vw;
+				color: var(--text);
+				height: 100vh;
+				font-family: "Open Sans", sans-serif;
+			}
+
+			.box {
+				height: 60vh;
+				width: 40vh;
+				border-radius: 20px;
+				z-index: -2;
+				overflow: hidden;
+			}
+			.bg-primary {
+				background: var(--primary);
+			}
+			.bg-night {
+				background: var(--night);
+			}
+			.date {
+				display: grid;
+				grid-template-columns: 1fr 1fr 1fr;
+				/* justify-content: space-around; */
+				padding-top: 10px;
+			}
+			.date > span {
+				text-align: center;
+				font-weight: bold;
+			}
+			.icon {
+				display: flex;
+				justify-content: center;
+				position: relative;
+			}
+			.icon::after {
+				content: "";
+				position: absolute;
+				/* top: 0; */
+				width: 500px;
+				height: 600px;
+				border-radius: 50%;
+				/* left: 0; */
+				z-index: -1;
+				transform: translateY(16%);
+				opacity: 0.2;
+			}
+			.bg-primary .icon::after {
+				background: radial-gradient(#232526, #414345);
+			}
+
+			.bg-night .icon::after {
+				background: radial-gradient(#bcbcbc, #414345);
+			}
+			.weather-icon {
+				width: 70%;
+			}
+			.temperature {
+				font-size: 3rem;
+			}
+			.address {
+				font-weight: normal;
+			}
+			.info {
+				display: grid;
+				grid-template-columns: repeat(3, 1fr);
+				padding-top: 20px;
+			}
+			.infos {
+				text-align: center;
+			}
+		</style>
+		<title>Document</title>
+	</head>
+	<body>
+		<div class="box">
+			<div class="date">
+				<span id="day">Monday</span><span id="monthdate">Feb 17</span><span id="year">2020</span>
+			</div>
+			<div class="icon">
+				<img src="{%iconurl%}" class="weather-icon" alt="" />
+			</div>
+			<h1 class="text-center temperature">{%temp%}&deg;C</h1>
+			<h3 class="text-center address">{%location%},{%country%}</h3>
+			<div class="info">
+				<div class="infos">
+					<p>Min</p>
+					<h3>{%mintemp%}&deg;C</h3>
+				</div>
+				<div class="infos">
+					<p>Wind</p>
+					<h3>{%wind%} km</h3>
+				</div>
+				<div class="infos">
+					<p>Max</p>
+					<h3>{%maxtemp%}&deg;C</h3>
+				</div>
+			</div>
+		</div>
+		<script>
+			const day = document.getElementById("day");
+			const monthdate = document.getElementById("monthdate");
+			const year = document.getElementById("year");
+			const box = document.querySelector(".box");
+			const date = new Date();
+			const weekdays = [
+				"Sunday",
+				"Monday",
+				"Tuesday",
+				"Wednesday",
+				"Thursday",
+				"Friday",
+				"Saturday",
+			];
+			const months = [
+				"January",
+				"February",
+				"March",
+				"April",
+				"May",
+				"Jun",
+				"July",
+				"Augest",
+				"September",
+				"October",
+				"November",
+				"December",
+			];
+			if (date.getHours() > 18 || date.getHours() < 5) {
+				box.classList.add("bg-night");
+				box.classList.remove("bg-primary");
+			} else {
+				box.classList.add("bg-primary");
+				box.classList.remove("bg-night");
+			}
+			day.innerText = weekdays[date.getDay()];
+			monthdate.innerText = months[date.getMonth()];
+			year.innerText = date.getFullYear();
+		</script>
+	</body>
+</html>
