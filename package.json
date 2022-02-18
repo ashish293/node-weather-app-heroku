@@ -4,6 +4,9 @@
   "main": "index.js",
   "author": "Ashsih ",
   "license": "MIT",
+  "scripts": {
+    "start": "node index"
+  },
   "dependencies": {
     "requests": "^0.3.0"
   }
