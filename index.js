@@ -1,6 +1,7 @@
 const fs = require("fs");
 const http = require("http");
 const requests = require("requests");
+const port = process.env.PORT || 8000;
 const url = "https://openweathermap.org/img/wn/";
 const homeFile = fs.readFileSync("home.html", "utf8");
 const replaceVal = (homeFile, myData) => {
@@ -30,6 +31,6 @@ const server = http.createServer((req, res) => {
 			console.log(err);
 		});
 });
-server.listen(8000, () => {
-	console.log("Starting server on port 8000");
+server.listen(port, () => {
+	console.log("Starting server on port " + port);
 });
