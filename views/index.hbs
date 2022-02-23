@@ -32,45 +32,6 @@
 				</div>
 			</div>
 		</div>
-		<script>
-			const day = document.getElementById("day");
-			const monthdate = document.getElementById("monthdate");
-			const year = document.getElementById("year");
-			const box = document.querySelector(".box");
-			const date = new Date();
-			const weekdays = [
-				"Sunday",
-				"Monday",
-				"Tuesday",
-				"Wednesday",
-				"Thursday",
-				"Friday",
-				"Saturday",
-			];
-			const months = [
-				"January",
-				"February",
-				"March",
-				"April",
-				"May",
-				"Jun",
-				"July",
-				"Augest",
-				"September",
-				"October",
-				"November",
-				"December",
-			];
-			if (date.getHours() > 18 || date.getHours() < 5) {
-				box.classList.add("bg-night");
-				box.classList.remove("bg-primary");
-			} else {
-				box.classList.add("bg-primary");
-				box.classList.remove("bg-night");
-			}
-			day.innerText = weekdays[date.getDay()];
-			monthdate.innerText = months[date.getMonth()];
-			year.innerText = date.getFullYear();
-		</script>
+		<script src="date.js"></script>
 	</body>
 </html>
