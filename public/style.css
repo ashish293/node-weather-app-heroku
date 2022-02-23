@@ -1,0 +1,91 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400&display=swap");
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+:root {
+	--primary: #5aa8f7;
+	--night: #2d3436;
+	--text: white;
+}
+
+/* Utility class */
+.text-center {
+	text-align: center;
+}
+body {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 100vw;
+	color: var(--text);
+	height: 100vh;
+	font-family: "Open Sans", sans-serif;
+}
+
+.box {
+	height: 60vh;
+	width: 40vh;
+	border-radius: 20px;
+	z-index: -2;
+	overflow: hidden;
+}
+.bg-primary {
+	background: var(--primary);
+}
+.bg-night {
+	background: var(--night);
+}
+.date {
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+	/* justify-content: space-around; */
+	padding-top: 10px;
+}
+.date > span {
+	text-align: center;
+	font-weight: bold;
+}
+.icon {
+	display: flex;
+	justify-content: center;
+	position: relative;
+}
+.icon::after {
+	content: "";
+	position: absolute;
+	/* top: 0; */
+	width: 500px;
+	height: 600px;
+	border-radius: 50%;
+	/* left: 0; */
+	z-index: -1;
+	transform: translateY(16%);
+	opacity: 0.2;
+}
+.bg-primary .icon::after {
+	background: radial-gradient(#232526, #414345);
+}
+
+.bg-night .icon::after {
+	background: radial-gradient(#bcbcbc, #414345);
+}
+.weather-icon {
+	width: 70%;
+}
+.temperature {
+	font-size: 3rem;
+}
+.address {
+	font-weight: normal;
+}
+.info {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	padding-top: 20px;
+}
+.infos {
+	text-align: center;
+}

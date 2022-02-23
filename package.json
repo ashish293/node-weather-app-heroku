@@ -5,9 +5,11 @@
   "author": "Ashsih ",
   "license": "MIT",
   "scripts": {
-    "start": "node index"
+    "start": "node src/index.js"
   },
   "dependencies": {
+    "express": "^4.17.3",
+    "hbs": "^4.2.0",
     "requests": "^0.3.0"
   }
 }

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="style.css" />
+		<title>Document</title>
+	</head>
+	<body>
+		<div class="box">
+			<div class="date">
+				<span id="day">Monday</span><span id="monthdate">Feb 17</span><span id="year">2020</span>
+			</div>
+			<div class="icon">
+				<img src={{iconUrl}} class="weather-icon" alt="" />
+			</div>
+			<h1 class="text-center temperature">{{temp}}&deg;C</h1>
+			<h3 class="text-center address">{{location}},{{country}}</h3>
+			<div class="info">
+				<div class="infos">
+					<p>Min</p>
+					<h3>{{mintemp}}&deg;C</h3>
+				</div>
+				<div class="infos">
+					<p>Wind</p>
+					<h3>{{wind}} km</h3>
+				</div>
+				<div class="infos">
+					<p>Max</p>
+					<h3>{{maxtemp}}&deg;C</h3>
+				</div>
+			</div>
+		</div>
+		<script>
+			const day = document.getElementById("day");
+			const monthdate = document.getElementById("monthdate");
+			const year = document.getElementById("year");
+			const box = document.querySelector(".box");
+			const date = new Date();
+			const weekdays = [
+				"Sunday",
+				"Monday",
+				"Tuesday",
+				"Wednesday",
+				"Thursday",
+				"Friday",
+				"Saturday",
+			];
+			const months = [
+				"January",
+				"February",
+				"March",
+				"April",
+				"May",
+				"Jun",
+				"July",
+				"Augest",
+				"September",
+				"October",
+				"November",
+				"December",
+			];
+			if (date.getHours() > 18 || date.getHours() < 5) {
+				box.classList.add("bg-night");
+				box.classList.remove("bg-primary");
+			} else {
+				box.classList.add("bg-primary");
+				box.classList.remove("bg-night");
+			}
+			day.innerText = weekdays[date.getDay()];
+			monthdate.innerText = months[date.getMonth()];
+			year.innerText = date.getFullYear();
+		</script>
+	</body>
+</html>
